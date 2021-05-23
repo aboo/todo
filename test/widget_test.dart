@@ -7,12 +7,12 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:todo/main.dart';
+import 'package:todo/my_app.dart';
 
 void main() {
   testWidgets('App has a placeholder', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(TodoApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('Implement Todo App here!'), findsOneWidget);

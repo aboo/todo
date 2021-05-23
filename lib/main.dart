@@ -1,33 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/my_app.dart';
+import 'package:todo/providers/todo_provider.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<TodoProvider>(
+        create: (context) => TodoProvider(),
       ),
-      home: TodoApp(),
-    );
-  }
-}
-
-class TodoApp extends StatelessWidget {
-  const TodoApp({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: _buildApp(),
-    );
-  }
-
-  _buildApp() {
-    return Text("Implement Todo App here!");
-  }
+    ],
+    child: TodoApp(),
+  ));
 }
