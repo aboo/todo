@@ -1,33 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
+import 'package:todo/app/app.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() async{
+  var delegate = await LocalizationDelegate.create(
+    fallbackLocale: 'en_US' ,supportedLocales: ['en_US','fa']);
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: TodoApp(),
-    );
-  }
-}
-
-class TodoApp extends StatelessWidget {
-  const TodoApp({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: _buildApp(),
-    );
-  }
-
-  _buildApp() {
-    return Text("Implement Todo App here!");
-  }
+  runApp(
+    LocalizedApp(delegate, MyApp()),
+  );
 }
