@@ -6,15 +6,32 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:todo/app/db/todo_database.dart';
+import 'package:todo/app/model/todo_model.dart';
+import 'package:todo/app/todoList/cubit/todo_cubit.dart';
 
 import 'package:todo/main.dart';
 
-void main() {
-  testWidgets('App has a placeholder', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('Implement Todo App here!'), findsOneWidget);
+main() {
+  TodoDatabase toDoDatabase = TodoDatabase();
+  List<TodoModel> todoModel;
+  TodoCubit cubit = TodoCubit(toDoDatabase);
+
+  late TodoCubit counterCubit;
+  group('TodoCubit', () {
+    setUp(() {
+      counterCubit = TodoCubit(toDoDatabase);
+    });
+
+    test('TodoState initial', () {
+      expect(counterCubit.state, isA<TodoInitial>());
+    });
+  });
+
+  group('db', () {
+    test('check db', () {
+      expect(isA<TodoDatabase>(), isNotNull);
+    });
   });
 }

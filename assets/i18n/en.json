@@ -1,3 +1,10 @@
 {
-  "todolist" : "Todo List"
+  "todolist" : "Todo List",
+  "errorMessage" : "Error",
+  "createTodo" : "Create Todo",
+  "save" : "Save",
+  "updateTodo" : "Update Todo",
+  "title" : "title",
+  "description" : "Description",
+  "tag" : "Tag"
 }
