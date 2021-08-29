@@ -13,6 +13,7 @@ abstract class AppTheme {
       inputDecorationTheme: _inputDecorationTheme,
       hintColor: AppColors.hintColor,
       dividerColor: AppColors.dividerColor,
+      bottomAppBarColor: AppColors.bottomAppBarColor,
       canvasColor: AppColors.canvasColor,
       backgroundColor: AppColors.backgroundColor,
       highlightColor: AppColors.highlightColor,

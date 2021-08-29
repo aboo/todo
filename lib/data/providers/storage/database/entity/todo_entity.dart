@@ -31,4 +31,27 @@ class ToDoEntity {
       required this.description,
       required this.dateTime,
       required this.tagId});
+
+  static List<ToDoEntity> generateFakeList() => [
+        ToDoEntity(
+            title: 'Todo number 1',
+            description: 'this is Todo number 1 descriptions',
+            dateTime: DateTime.now().toString(),
+            tagId: '1'),
+        ToDoEntity(
+            title: 'Todo number 2',
+            description: 'this is Todo number 2 descriptions',
+            dateTime: DateTime.now().toString(),
+            tagId: '1'),
+        ToDoEntity(
+            title: 'Todo number 3',
+            description: 'this is Todo number 3 descriptions',
+            dateTime: DateTime.now().toString(),
+            tagId: '1'),
+        ToDoEntity(
+            title: 'Todo number 4',
+            description: 'this is Todo number 4 descriptions',
+            dateTime: DateTime.now().toString(),
+            tagId: '1'),
+      ];
 }

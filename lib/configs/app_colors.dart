@@ -18,6 +18,7 @@ abstract class AppColors {
   static const Color warningColor = Color(0xffffbb33);
   static const Color scrollTrackColor = Color(0xffC4C4C4);
   static const Color dragLineColor = Color(0xffC4C4C4);
+  static const Color bottomAppBarColor = Color(0xffC4C4C4);
   static const Color inputFillColor = Color(0xffF6F6F6);
   static const Color inputNormalBorderColor = Color(0x4D31B768);
   static const Color inputFocusBorderColor = Color(0xff31B768);

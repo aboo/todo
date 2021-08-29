@@ -97,6 +97,9 @@ class LayoutSizes {
 
   double get buttonHeightL => responsiveH(36);
 
+  //bottom app bar
+  double get bottomAppBarHeight => responsive(40);
+
   //daynamic
   double responsive(double size, {Axis axis = Axis.vertical}) {
     final currentSize =

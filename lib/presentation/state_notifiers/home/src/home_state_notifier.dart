@@ -15,20 +15,29 @@ class HomeStateNotifier extends StateNotifier<HomeState> {
 
   HomeStateNotifier({required this.repository}) : super(HomeState.initial());
 
-  Future<void> getAllToDoList() async {
+  Future<void> getAllToDoList({int limit = 10, int offset = 0}) async {
     try {
       state = const HomeState.loading();
-      final data = await (await repository).findAll();
+      //todo un comment this two line of code after todo form created
+      // final data =
+      //     await (await repository).findAll(limit: limit, offset: offset);
+      await Future.delayed(Duration(seconds: 1));
+      final data = ToDoEntity.generateFakeList();
       state = HomeState.data(data);
     } catch (e, s) {
       state = const HomeState.error(Strings.someErrorHappened);
     }
   }
 
-  Future<void> filterTodoList({required int tagId, required int status}) async {
+  Future<void> filterTodoList(
+      {required int tagId,
+      required int status,
+      int limit = 10,
+      int offset = 0}) async {
     try {
       state = const HomeState.loading();
-      final data = await (await repository).filter(tagId, status);
+      final data = await (await repository)
+          .filter(tagId, status, limit: limit, offset: offset);
       state = HomeState.data(data);
     } catch (e, s) {
       state = const HomeState.error(Strings.someErrorHappened);

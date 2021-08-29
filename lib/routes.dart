@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todo/configs/transitions/fade_page_route.dart';
+import 'package:todo/presentation/screens/create_todo/create_todo.dart';
 
 import 'presentation/screens/home/home.dart';
 
 abstract class NavigationPaths {
   static const String home = '/home';
+  static const String createToDo = '/home/create';
 }
 
 abstract class AppNavigator {
@@ -14,6 +16,9 @@ abstract class AppNavigator {
     switch (settings.name) {
       case NavigationPaths.home:
         return FadePageRoute(page: const HomeScreen());
+
+      case NavigationPaths.createToDo:
+        return FadePageRoute(page: const CreateToDoScreen());
 
       default:
         return FadePageRoute(page: const HomeScreen());
