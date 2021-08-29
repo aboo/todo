@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo/configs/theme/app_theme.dart';
+import 'package:todo/routes.dart';
+
+import 'configs/sizes/src/design_sizes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,32 +13,31 @@ void main() {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(MyApp());
+  runApp(ToDoApp());
 }
 
-class MyApp extends StatelessWidget {
+class ToDoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Todo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      home: TodoApp(),
+      navigatorKey: AppNavigator.navigatorKey,
+      onGenerateRoute: AppNavigator.onGenerateRoute,
+      initialRoute: NavigationPaths.home,
+      builder: (context, child) {
+        final data = MediaQuery.of(context);
+        final textScaleFactor =
+            data.size.width / DesignSizes.mobileScreenSize.width;
+
+        return MediaQuery(
+          data: data.copyWith(
+            textScaleFactor: textScaleFactor,
+          ),
+          child: child!,
+        );
+      },
     );
-  }
-}
-
-class TodoApp extends StatelessWidget {
-  const TodoApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: _buildApp(),
-    );
-  }
-
-  _buildApp() {
-    return Text("Implement Todo App here!");
   }
 }

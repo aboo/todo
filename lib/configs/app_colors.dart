@@ -36,4 +36,5 @@ abstract class AppColors {
   static const Color backgroundPaintColor = Color(0xff31B768);
   static const Color textSelectionColor = Color(0x4D31B768);
   static const Color shadowColor = Color(0xFF404040);
+  static const Color shimmerColor = Color(0xffeeeeee);
 }
