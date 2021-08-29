@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:todo/configs/theme/app_theme.dart';
 import 'package:todo/routes.dart';
 
@@ -13,7 +14,7 @@ void main() {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(ToDoApp());
+  runApp(ProviderScope(child: ToDoApp()));
 }
 
 class ToDoApp extends StatelessWidget {
