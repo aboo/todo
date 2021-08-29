@@ -63,7 +63,7 @@ class _HomeConsumerState extends ConsumerState<HomeScreen> {
         color: Theme.of(context).iconTheme.color,
       ),
       onPressed: () {
-        AppNavigator.push(NavigationPaths.createToDo);
+        AppNavigator.replaceWith(NavigationPaths.createToDo);
       },
     );
   }
