@@ -57,3 +57,14 @@ You will receive bonus points if:
 
 Replace this text with any required instruction on how to build, run and use the
 app.
+
+## How to run project?
+
+Notice: At this time the project just tested on the Android platform.
+
+
+In the cli run follow commands step by step:
+
+1.flutter pub get
+2.flutter pub run build_runner build --delete-conflicting-outputs
+3.flutter run
