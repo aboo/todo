@@ -11,4 +11,14 @@ class HiveServices {
     Map<dynamic, dynamic> taskList = box.toMap();
     return taskList.values.toList();
   }
+
+  deleteTask(Task task) async {
+    await box.delete(task.key);
+  }
+
+  updateTask(Task task) async {
+    await box.putAt(task.key, task);
+
+    // print('key is : ${index}');
+  }
 }

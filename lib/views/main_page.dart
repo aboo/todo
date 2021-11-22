@@ -6,6 +6,7 @@ import 'package:todo_app_challenge/models/task.dart';
 import 'package:todo_app_challenge/viewmodels/main_page_viewmodel.dart';
 import 'package:todo_app_challenge/viewmodels/main_page_viewmodel.dart';
 import 'package:todo_app_challenge/views/add_task_page.dart';
+import 'package:todo_app_challenge/views/edit_page.dart';
 
 import '../service_locator.dart';
 
@@ -122,7 +123,9 @@ class TaskCard extends ViewModelWidget<MainPageViewModel> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.yellow),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(EditTaskPage(task: task));
+              },
               child: const Text(
                 "Edit",
                 style: TextStyle(
