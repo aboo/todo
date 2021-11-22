@@ -8,12 +8,14 @@ import 'package:path_provider/path_provider.dart';
 import 'package:todo_app_challenge/service_locator.dart';
 import 'package:todo_app_challenge/views/main_page.dart';
 
+import 'models/task.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Directory appDocumentDir = await getApplicationDocumentsDirectory();
 
   await Hive.initFlutter(appDocumentDir.path);
-
+  Hive.registerAdapter(TaskAdapter());
   await Hive.openBox("task");
 
   //Hive.box('task').clear();
