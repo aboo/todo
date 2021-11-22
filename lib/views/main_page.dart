@@ -99,8 +99,12 @@ class TaskCard extends ViewModelWidget<MainPageViewModel> {
                   color: (task.isDone) ? Colors.green : Colors.black),
             ),
             Checkbox(
+              activeColor: Colors.pink,
               value: task.isDone,
-              onChanged: (value) async {},
+              onChanged: (value) async {
+                task.isDone = value;
+                model.completeTask(task);
+              },
             ),
           ],
         ),
@@ -111,7 +115,10 @@ class TaskCard extends ViewModelWidget<MainPageViewModel> {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.red),
               ),
-              onPressed: () async {},
+              onPressed: () async {
+                await model.deleteTask(task);
+                model.getTasks();
+              },
               child: const Text(
                 "Delete",
                 style: TextStyle(

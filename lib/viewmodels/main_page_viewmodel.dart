@@ -14,4 +14,15 @@ class MainPageViewModel extends BaseViewModel {
     notifyListeners();
     setBusy(false);
   }
+
+  deleteTask(Task task) async {
+    await hiveServices.deleteTask(task);
+
+    notifyListeners();
+  }
+
+  completeTask(Task task) async {
+    await hiveServices.updateTask(task);
+    notifyListeners();
+  }
 }
