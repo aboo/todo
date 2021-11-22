@@ -5,6 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'package:todo_app_challenge/models/task.dart';
 import 'package:todo_app_challenge/viewmodels/main_page_viewmodel.dart';
 import 'package:todo_app_challenge/viewmodels/main_page_viewmodel.dart';
+import 'package:todo_app_challenge/views/add_task_page.dart';
 
 import '../service_locator.dart';
 
@@ -13,6 +14,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainPageViewModel>.reactive(
       viewModelBuilder: () => getIt<MainPageViewModel>(),
+      onModelReady: (model) => model.getTasks(),
       builder: (context, model, child) => SafeArea(
         child: Scaffold(
           body: Center(
@@ -27,7 +29,7 @@ class MainPage extends StatelessWidget {
                   color: Colors.green.shade300,
                   child: Center(
                     child: Text(
-                      'data',
+                      '${model.tasks.length}',
                       style: TextStyle(
                         fontSize: 25,
                       ),
@@ -57,13 +59,15 @@ class MainPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: ElevatedButton(
-                    onPressed: () {},
                     child: const Text(
                       "Add",
                       style: TextStyle(
                         fontSize: 20,
                       ),
                     ),
+                    onPressed: () {
+                      Get.to(AddTask());
+                    },
                   ),
                 ),
               ],
@@ -77,7 +81,7 @@ class MainPage extends StatelessWidget {
 
 class TaskCard extends ViewModelWidget<MainPageViewModel> {
   Task task;
-  TaskCard({required this.task});
+  TaskCard({@required this.task});
 
   @override
   Widget build(BuildContext context, MainPageViewModel model) {

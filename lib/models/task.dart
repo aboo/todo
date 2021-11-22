@@ -12,8 +12,8 @@ class Task extends HiveObject {
   bool isDone = false;
   @HiveField(3)
   Task({
-    required this.description,
-    required this.isDone,
-    required this.name,
+    @required this.description,
+    @required this.isDone,
+    @required this.name,
   });
 }
