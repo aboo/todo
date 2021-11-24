@@ -56,6 +56,12 @@ class TodoCard extends StatelessWidget {
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(onPressed: (){
+                todoProvider.deleteItem(todo.id);
+              }, icon: const Icon(Icons.delete,color: Colors.red,)),
+            ),
           ],
         ),
       ),

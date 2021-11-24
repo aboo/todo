@@ -33,4 +33,12 @@ class SqLiteService {
     await db.update('items', map,where: 'ID = ?',whereArgs: [id]);
   }
 
+  static Future<void> delete(int id)async{
+    var databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'TodoList.db');
+    Database database = await openDatabase(path, version: 1);
+    final Database db = database;
+    await db.delete('items',where: 'ID = ?',whereArgs: [id]);
+  }
+
 }
