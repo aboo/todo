@@ -28,6 +28,6 @@ class TodoApp extends StatelessWidget {
   }
 
   _buildApp() {
-    return Text("Implement Todo App here!");
+    return Text("Implement");
   }
 }
