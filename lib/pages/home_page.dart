@@ -7,9 +7,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: AddItemPage(),
+      appBar: AppBar(
+        title: const Text(
+          "TodoApp",
+          style: TextStyle(fontWeight: FontWeight.w900),
+        ),
+      ),
+      body: Container(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const AddItemPage(),
+            ),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
