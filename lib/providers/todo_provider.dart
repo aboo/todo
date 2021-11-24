@@ -28,4 +28,12 @@ class TodoProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateTodoItem(Todo todo) {
+    filteredTodoList.firstWhere((element) => element.id == todo.id)
+      ..tags = todo.tags
+      ..title = todo.title
+      ..description = todo.description;
+    notifyListeners();
+  }
+
 }
