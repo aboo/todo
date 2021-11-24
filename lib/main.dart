@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/pages/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,11 +24,7 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: _buildApp(),
+      child: HomePage(),
     );
-  }
-
-  _buildApp() {
-    return Text("Implement");
   }
 }
