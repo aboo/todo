@@ -55,5 +55,6 @@ You will receive bonus points if:
 
 ## Manual
 
-Replace this text with any required instruction on how to build, run and use the
-app.
+before running the app, enter the following command in terminal
+flutter pub get
+flutter pub run build_runner build --delete-conflicting-outputs
