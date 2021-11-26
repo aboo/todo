@@ -11,7 +11,7 @@
     Fore more details:
     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
   -->
-  <base href="/">
+  <base href="/todo/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -41,5 +41,20 @@
     }
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+<!--  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>-->
+<!--  <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>-->
+  <script>
+      const firebaseConfig = {
+      apiKey: "AIzaSyAof8TRF-DJFsl7X6lJfHB2Gw3pRlvMAHc",
+      authDomain: "brew-crew-test.firebaseapp.com",
+      databaseURL: "https://brew-crew-test.firebaseio.com",
+      projectId: "brew-crew-test",
+      storageBucket: "brew-crew-test.appspot.com",
+      messagingSenderId: "836872112746",
+      appId: "1:836872112746:web:0f29ca74cf6b28ba149813"
+    };
+      firebase.initializeApp(firebaseConfig);
+  </script>
 </body>
 </html>
