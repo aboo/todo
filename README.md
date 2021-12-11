@@ -55,5 +55,8 @@ You will receive bonus points if:
 
 ## Manual
 
-Replace this text with any required instruction on how to build, run and use the
-app.
+```
+flutter pub get
+flutter pub run build_runner build
+flutter run
+```
