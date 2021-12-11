@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todo/model/task_model.dart';
+import 'package:todo/view/Home_view.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async{
+   Hive.registerAdapter(TaskAdapter());
+  await Hive.initFlutter();
+  await Hive.openBox<Task>('takes');
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Todo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -23,11 +31,9 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: _buildApp(),
+      child: HomeView(),
     );
   }
 
-  _buildApp() {
-    return Text("Implement Todo App here!");
-  }
+  
 }
