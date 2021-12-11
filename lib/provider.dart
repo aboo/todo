@@ -14,3 +14,5 @@ final homeController =
 final addTaskController = ChangeNotifierProvider.autoDispose<AddTaskNotifier>(
     (ref) => AddTaskNotifier());
 
+final editTaskController = ChangeNotifierProvider.autoDispose<EditTaskNotifier>(
+    (ref) => EditTaskNotifier());

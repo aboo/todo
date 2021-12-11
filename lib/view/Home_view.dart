@@ -5,6 +5,7 @@ import 'package:todo/model/task_model.dart';
 import 'package:todo/provider.dart';
 import 'package:reorderables/reorderables.dart';
 import 'package:todo/view/add_task_view.dart';
+import 'package:todo/view/edit_task_view.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   @override
@@ -29,9 +30,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
   Widget build(BuildContext context) {
     final _box = ref.watch(tasksBoxProvider);
     final controller = ref.watch(homeController);
-    
+
     return Scaffold(
-      key: _scaffoldKey,
+      key: _scaffoldKey,drawer: DrawerCustom(),
       appBar: AppBar(
         title: ValueListenableBuilder(
             valueListenable: _box.listenable(),
@@ -46,6 +47,18 @@ class _HomeViewState extends ConsumerState<HomeView> {
             valueListenable: _box.listenable(),
             builder: (BuildContext context, Box<Task> box, Widget? child) {
               List<Task> tasks = box.values.toList();
+
+              if (controller.filter == 'all') {
+                tasks = box.values.toList();
+              } else if (controller.filter == 'done') {
+                tasks = tasks.where((i) => i.status).toList();
+              } else if (controller.filter == 'pending') {
+                tasks = tasks.where((i) => !i.status).toList();
+              } else {
+                tasks = tasks
+                    .where((i) => i.tags.contains(controller.filter))
+                    .toList();
+              }
 
               return ReorderableColumn(
                 onReorder: (oldIndex, newIndex) {
@@ -69,7 +82,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
                           });
                         }),
                     title: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  EditTaskView(taskIndex: index)),
+                        );
+                      },
                       child: Row(
                         children: [
                           Flexible(
@@ -122,6 +142,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
                                     )))
                       ],
                     ),
+                    trailing: IconButton(
+                        onPressed: () {
+                          box.deleteAt(index);
+                        },
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red[400],
+                        )),
                   );
                 }),
               );
@@ -142,3 +170,63 @@ class _HomeViewState extends ConsumerState<HomeView> {
   }
 }
 
+class DrawerCustom extends ConsumerWidget {
+  const DrawerCustom({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(homeController);
+    return Drawer(
+        child: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Container(
+              color: Colors.blue,
+              height: 40,
+              child: const Center(
+                child: Text(
+                  'Filter',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Expanded(
+                child: Column(
+              children: List.generate(
+                  filters.length,
+                  (i) => Expanded(
+                          child: GestureDetector(
+                        onTap: () {
+                          controller.setFilter(filters[i]);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 4),
+                          color: controller.filter == filters[i]
+                              ? Colors.red[300]
+                              : Colors.grey[300],
+                          padding: const EdgeInsets.all(8),
+                          child: Center(
+                            child: Text(
+                              filters[i],
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        ),
+                      ))),
+            ))
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+
+
+List<String> tagList = ['work', 'school', 'project', 'home', 'shopping'];
+
+List<String> filters = ['all', 'done', 'pending', ...tagList];

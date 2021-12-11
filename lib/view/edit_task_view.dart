@@ -7,17 +7,20 @@ import 'package:todo/model/task_model.dart';
 import 'package:todo/provider.dart';
 import 'package:todo/view/Home_view.dart';
 
-class AddTaskView extends ConsumerWidget {
-  AddTaskView({Key? key}) : super(key: key);
-
+class EditTaskView extends ConsumerWidget {
+  EditTaskView({required this.taskIndex, Key? key}) : super(key: key);
+  final int taskIndex;
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final box = ref.watch(tasksBoxProvider);
-    final controller = ref.watch(addTaskController);
-
+    final controller = ref.watch(editTaskController);
+    Task task = box.getAt(taskIndex)!;
+    titleController.text = task.title;
+    descriptionController.text = task.description;
+    controller.tags = task.tags;
     return Scaffold(
       appBar: AppBar(),
       body: Container(
@@ -56,7 +59,11 @@ class AddTaskView extends ConsumerWidget {
                               .toList(),
                           initialValue: controller.tags,
                           onConfirm: (List<String> values) {
-                            controller.addTags(values);
+                            box.putAt(
+                                taskIndex,
+                                Task(task.title, task.description, values,
+                                    task.status));
+                            controller.addTags();
                           },
                           maxChildSize: 0.8,
                         );
@@ -78,11 +85,13 @@ class AddTaskView extends ConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                box.add(Task(titleController.text, descriptionController.text,
-                    controller.tags, false));
+                box.putAt(
+                    taskIndex,
+                    Task(titleController.text, descriptionController.text,
+                        controller.tags, task.status));
                 Navigator.pop(context);
               },
-              child: const Text('All Task'),
+              child: const Text('Edit'),
             )
           ],
         )),
