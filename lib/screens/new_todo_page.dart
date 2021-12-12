@@ -1,57 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todo/controllers/new_todo_controller.dart';
 import 'package:todo/widgets/tag_widget.dart';
 
 class NewTodoPage extends StatelessWidget {
+  TextEditingController title = TextEditingController(),
+      detail = TextEditingController(),
+      newTag = TextEditingController();
+  NewTodoControler controler = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("New Todo"),
         actions: [
-          InkWell(
-            radius: 50,
-            onTap: () {},
-            child: Center(
-                child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text("SAVE"),
-            )),
-          ),
+          Obx(() => InkWell(
+                radius: 50,
+                onTap: () async {
+                  await controler.save(title.text, detail.text);
+                  Get.back();
+                },
+                child: Center(
+                    child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: controler.loading.value
+                      ? CircularProgressIndicator()
+                      : Text("SAVE"),
+                )),
+              )),
         ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            TextField(decoration: InputDecoration(hintText: "Title")),
+            TextField(
+                controller: title,
+                decoration: InputDecoration(hintText: "Title")),
             SizedBox(height: 16),
             TextField(
-                maxLines: 4, decoration: InputDecoration(hintText: "detail")),
+                controller: detail,
+                maxLines: 4,
+                decoration: InputDecoration(hintText: "detail")),
             SizedBox(height: 16),
-            CheckboxListTile(
-              title: Text("Mark as done"),
-              value: true,
-              onChanged: (newValue) {},
-              contentPadding: EdgeInsets.zero,
-            ),
-            Row(
-              children: [
-                TextField(
-                    decoration: InputDecoration(
-                        hintText: "endter your tag and prest submit")),
-              ],
-            ),
+            Obx(() => CheckboxListTile(
+                  title: Text("Mark as done"),
+                  value: controler.markedAsDone.value,
+                  onChanged: (newValue) {
+                    controler.markedAsDone.value = newValue;
+                  },
+                  contentPadding: EdgeInsets.zero,
+                )),
+            TextField(
+                controller: newTag,
+                onSubmitted: (_) {
+                  String str = newTag.text;
+                  newTag.clear();
+                  controler.addTag(str);
+                },
+                decoration: InputDecoration(
+                    hintText: "endter your tag and press submit")),
             SizedBox(
               height: 16,
             ),
-            Row(
-              children: ["tag1"]
-                  .map((e) => TagWidget(
-                        title: e,
-                        onTap: () {},
-                      ))
-                  .toList(),
-            )
+            Obx(() => Wrap(
+                  children: controler.tags.value
+                      .map((e) => TagWidget(
+                            title: e,
+                            onTap: () {},
+                          ))
+                      .toList(),
+                ))
           ],
         ),
       ),
