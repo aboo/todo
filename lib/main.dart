@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:todo/config/app_routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,27 +9,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: TodoApp(),
+    return GetMaterialApp(
+      initialRoute: AppRoutes.todoList,
+      getPages: AppRoutes.getPages(),
     );
-  }
-}
-
-class TodoApp extends StatelessWidget {
-  const TodoApp({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: _buildApp(),
-    );
-  }
-
-  _buildApp() {
-    return Text("Implement Todo App here!");
   }
 }
