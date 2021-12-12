@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todo/controllers/todo_item_controller.dart';
 import 'package:todo/models/todo_model.dart';
 
 class TodoItem extends StatelessWidget {
   final TodoModel todoModel;
 
-  const TodoItem({Key key, this.todoModel}) : super(key: key);
+  TodoItem({Key key, this.todoModel}) : super(key: key);
+  TodoItemController controller;
   @override
   Widget build(BuildContext context) {
+    controller = TodoItemController(todoModel);
     return InkWell(
       onTap: () {},
       child: ListTile(
@@ -23,9 +27,16 @@ class TodoItem extends StatelessWidget {
     );
   }
 
-  Widget _renderDelete() =>
-      IconButton(onPressed: () {}, icon: Icon(Icons.delete));
-  Widget _renderCheck() => IconButton(
-      onPressed: () {},
-      icon: Icon(todoModel.isDone ? Icons.check : Icons.remove));
+  Widget _renderDelete() => IconButton(
+      onPressed: () async {
+        print("000");
+        await controller.delete();
+      },
+      icon: Icon(Icons.delete));
+  Widget _renderCheck() => Obx(() => IconButton(
+      onPressed: () async {
+        print("000");
+        await controller.toggleCheck();
+      },
+      icon: Icon(controller.isDone.value ? Icons.check : Icons.remove)));
 }

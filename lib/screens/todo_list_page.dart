@@ -52,7 +52,8 @@ class TodoListPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Get.toNamed(AppRoutes.newTodo);
+          Get.toNamed(AppRoutes.newTodo)
+              .then((value) => controller.getAllTodos());
         },
       ),
     );
