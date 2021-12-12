@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo/config/app_routes.dart';
 import 'package:todo/controllers/todo_item_controller.dart';
+import 'package:todo/controllers/todo_list_controller.dart';
 import 'package:todo/models/todo_model.dart';
 
 class TodoItem extends StatelessWidget {
@@ -12,7 +14,10 @@ class TodoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     controller = TodoItemController(todoModel);
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(AppRoutes.editTodo, arguments: todoModel)
+            .then((value) => Get.find<TodoListController>().getAllTodos());
+      },
       child: ListTile(
         title: Text(todoModel.title),
         subtitle: Text(todoModel.detail),

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo/controllers/edit_todo_controller.dart';
 import 'package:todo/controllers/new_todo_controller.dart';
 import 'package:todo/widgets/tag_widget.dart';
 
-class EditTodo extends StatelessWidget {
+class EditTodoPage extends StatelessWidget {
   TextEditingController title = TextEditingController(),
       detail = TextEditingController(),
       newTag = TextEditingController();
-  NewTodoControler controler = Get.find();
+  EditTodoController controler = Get.find();
   @override
   Widget build(BuildContext context) {
+    controler.init(Get.arguments);
+    title.text = controler.title.value;
+    detail.text = controler.detial.value;
     return Scaffold(
       appBar: AppBar(
         title: Text("New Todo"),
