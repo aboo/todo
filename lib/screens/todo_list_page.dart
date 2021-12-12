@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/config/app_routes.dart';
 import 'package:todo/models/todo_model.dart';
 import 'package:todo/widgets/todo_list/action_button.dart';
 import 'package:todo/widgets/todo_list/todo_item.dart';
@@ -28,7 +29,9 @@ class TodoListPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(AppRoutes.newTodo);
+        },
       ),
     );
   }
