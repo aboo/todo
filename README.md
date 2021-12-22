@@ -53,6 +53,19 @@ You will receive bonus points if:
 
 - The application works on Windows as well
 
+## Run On Desktop Windows
+- Run flutter channel dev
+- Run flutter upgrade
+- If you've never run a desktop build before, 
+you will need to enable it with a one-time command for your current platform:
+
+- flutter config --enable-windows-desktop
+- flutter config --enable-macos-desktop
+- flutter config --enable-linux-desktop
+
+- If you re-start your IDE, you should also see a new launch option for your 
+current desktop platform.
+
 
 - List of ToDo items ☑
 - Ability to scroll a long list of items ☑
@@ -78,22 +91,11 @@ I have done most of them in near 3 hours.
 
 ## Run
 get the packages: flutter pub get
- 
-Run flutter channel dev
-Run flutter upgrade
-If you've never run a desktop build before, 
-you will need to enable it with a one-time command for your current platform:
-
-flutter config --enable-windows-desktop
-flutter config --enable-macos-desktop
-flutter config --enable-linux-desktop
-
-If you re-start your IDE, you should also see a new launch option for your current desktop platform.
 
 Run:
-flutter run -d windows
-flutter run -d macos
-flutter run -d linux
-flutter run -d android
-flutter run -d ios
-flutter run -d web
+- flutter run -d windows
+- flutter run -d macos
+- flutter run -d linux
+- flutter run -d android
+- flutter run -d ios
+- flutter run -d web
