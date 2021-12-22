@@ -54,6 +54,7 @@ You will receive bonus points if:
 - The application works on Windows as well
 
 ## Run On Desktop Windows
+
 - Run flutter channel dev
 - Run flutter upgrade
 - If you've never run a desktop build before, 
@@ -66,6 +67,7 @@ you will need to enable it with a one-time command for your current platform:
 - If you re-start your IDE, you should also see a new launch option for your 
 current desktop platform.
 
+## Requirements
 
 - List of ToDo items ☑
 - Ability to scroll a long list of items ☑
@@ -84,12 +86,14 @@ current desktop platform.
 - Filtering bae on tag and status️✘
 
 ## Attention
+
 Two of the items from the above list weren't done. 
 I was asked to do all the tasks on the list in 2 hours but honestly, 
 I have done most of them in near 3 hours.
 (Installation for devices)
 
 ## Run
+
 get the packages: flutter pub get
 
 Run:
