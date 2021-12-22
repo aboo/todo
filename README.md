@@ -53,7 +53,43 @@ You will receive bonus points if:
 
 - The application works on Windows as well
 
-## Manual
 
-Replace this text with any required instruction on how to build, run and use the
-app.
+- List of ToDo items ☑
+- Ability to scroll a long list of items ☑
+- Ability to Re-order the ToDo items ☑
+- Marking the item as Complete ☑
+- Deleting an item ☑
+- Ability to see the details of a ToDo item ☑
+- Ability to modify a ToDo item ☑
+- Create a new ToDo item with following fields
+  - Title ☑
+  - Description ☑
+  - Tags ✘
+- The data persist on the device between sessions ☑
+- There should be a counter in the app bar always showing the current number of ☑
+  ToDo items pending ☑
+- Filtering bae on tag and status️✘
+
+Two of the items from the above list weren't done. 
+I was asked to do all the tasks on the list in 2 hours but honestly, 
+I have done most of them in near 3 hours.
+(Installation for devices)
+
+Run flutter channel dev
+Run flutter upgrade
+If you've never run a desktop build before, 
+you will need to enable it with a one-time command for your current platform:
+
+flutter config --enable-windows-desktop
+flutter config --enable-macos-desktop
+flutter config --enable-linux-desktop
+
+If you re-start your IDE, you should also see a new launch option for your current desktop platform.
+
+Run:
+flutter run -d windows
+flutter run -d macos
+flutter run -d linux
+flutter run -d android
+flutter run -d ios
+flutter run -d web
