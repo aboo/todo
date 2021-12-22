@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/states/todo_states.dart';
+import 'package:todo/screens/todo_form_screen.dart';
+import 'package:todo/states/todo_model_state.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => TodoState(),
+      create: (context) => TodoModelState(),
       child: MyApp(),
     ),
   );
@@ -21,7 +22,9 @@ class MyApp extends StatelessWidget {
       ),
       home: TodoApp(),
       initialRoute: '/',
-      routes: {},
+      routes: {
+        '/entry': (context) => const TodoEntryScreen(),
+      },
     );
   }
 }
@@ -38,15 +41,15 @@ class TodoApp extends StatelessWidget {
     // return Text("Implement Todo App here!");
     int counterTodoIsDone = 0;
     int counterTodo = 0;
-    final todo = Provider.of<TodoState>(context);
-    if (todo.todos.isNotEmpty) {
+    final todo = Provider.of<TodoModelState>(context);
+    if (todo.todoList.isNotEmpty) {
       counterTodoIsDone = 0;
       counterTodo = 0;
-      for (int i = 0; i < todo.todos.length; i++) {
-        if (todo.todos[i].isDone) {
+      for (int i = 0; i < todo.todoList.length; i++) {
+        if (todo.todoList[i].isDone) {
           counterTodoIsDone++;
         }
-        if (!todo.todos[i].isDone) {
+        if (!todo.todoList[i].isDone) {
           counterTodo++;
         }
       }
@@ -72,8 +75,38 @@ class TodoApp extends StatelessWidget {
         ),
       ),
       body: const TodoList(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () => {Navigator.pushNamed(context, "/entry")},
+      ),
     );
   }
+}
+
+showAlertDialog(BuildContext context, int todoId, TodoModelState todoStates) {
+  var lookAtTodo = todoStates.read(todoId);
+  // set up the button
+  Widget okButton = TextButton(
+    child: const Text("OK"),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text(lookAtTodo.title.toString()),
+    content: Text(lookAtTodo.description.toString()),
+    actions: [
+      okButton,
+    ],
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
 
 class TodoList extends StatelessWidget {
@@ -81,10 +114,11 @@ class TodoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<TodoState>(
+    final todo = Provider.of<TodoModelState>(context);
+    return Consumer<TodoModelState>(
       builder: (context, todoState, child) => ListView.builder(
         padding: const EdgeInsets.all(8),
-        itemCount: todoState.todos.length,
+        itemCount: todoState.todoList.length,
         itemBuilder: (BuildContext context, int index) {
           return SizedBox(
             height: 50,
@@ -92,21 +126,30 @@ class TodoList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Checkbox(
-                  value: todoState.todos[index].isDone,
+                  value: todoState.todoList[index].isDone,
                   onChanged: (bool? newValue) => {
-                    todoState.toggleDone(todoState.todos[index].id),
+                    todoState.toggleDone(todoState.todoList[index].id),
                   },
                 ),
-                Text(todoState.todos[index].title.toString()),
+                Text(todoState.todoList[index].title.toString()),
                 IconButton(
                   tooltip: "Edit",
                   icon: const Icon(Icons.edit),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.pushNamed(context, "/entry",
+                        arguments:
+                            ScreenArguments(todoState.todoList[index].id))
+                  },
                 ),
                 IconButton(
                   tooltip: "Details",
                   icon: const Icon(Icons.remove_red_eye_sharp),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    showAlertDialog(
+                        context,
+                        int.parse(todoState.todoList[index].id.toString()),
+                        todo)
+                  },
                 ),
               ],
             ),
