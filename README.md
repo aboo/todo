@@ -70,13 +70,13 @@ You will receive bonus points if:
   ToDo items pending ☑
 - Filtering bae on tag and status️✘
 
-##Attention
+## Attention
 Two of the items from the above list weren't done. 
 I was asked to do all the tasks on the list in 2 hours but honestly, 
 I have done most of them in near 3 hours.
 (Installation for devices)
 
-##Run
+## Run
 get the packages: flutter pub get
  
 Run flutter channel dev
