@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:todo/application/bloc/add_todo_bloc.dart';
+import 'package:todo/application/add_todo/add_todo_bloc.dart';
+import 'package:todo/application/home_page/home_page_bloc.dart';
 import 'package:todo/data/db/database.dart';
 import 'package:todo/data/db/database_impl.dart';
 import 'package:todo/data/tag/tag_repository.dart';
@@ -30,6 +31,13 @@ void setUpGetIt() {
       todoRepository: getIt<TodoRepository>(),
       tagRepository: getIt<TagRepository>(),
       todo: todo,
+    ),
+  );
+
+  getIt.registerFactory<HomePageBloc>(
+    () => HomePageBloc(
+      todoRepository: getIt<TodoRepository>(),
+      tagRepository: getIt<TagRepository>(),
     ),
   );
 }

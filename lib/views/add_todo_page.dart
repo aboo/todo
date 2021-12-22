@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo/application/bloc/add_todo_bloc.dart';
+import 'package:todo/application/add_todo/add_todo_bloc.dart';
 import 'package:todo/core/get_it.dart';
 import 'package:todo/domain/todo.dart';
 import 'package:todo/views/widgets/add_tag_widget.dart';
