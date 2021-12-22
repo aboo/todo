@@ -1,59 +1,12 @@
-# ToDo Application Challenge
+# Few Notes about the app
 
-This challenge is to implement the best possible ToDo list application in the
-shortest amount of time.
+All the features that is mentioned in the original readme file is implemented. 
+Since time was a limiting factor i used same page for both viewing the details of a todo
+and editing in, switching between these two mode is done with a button.
 
-## Objectives
+There are several parts of the app that the descision to do something may not be clear
+so ive added a few lines of comment to explain my reasons. All these comments prefixed with
+"README: " to make it easy to search for every spot.
 
-The objectives of this task is to present your skills in following areas:
-
-- Understanding Flutter application flow
-- Project structure
-- Use of design patterns
-- Use of TDD
-- Application Architecture
-- Clean coding
-- Source control
-
-## Requirements
-
-Followings are the requirements of the project:
-
-> [!NOTE] UI is not important and you can use vanilla material design.
-
-- List of ToDo items
-- Ability to scroll a long list of items
-- Ability to Re-order the ToDo items
-- Marking the item as Complete
-- Deleting an item
-- Ability to see the details of a ToDo item
-- Ability to modify a ToDo item
-- Create a new ToDo item with following fields
-  - Title
-  - Description
-  - Tags
-- The data persist on the device between sessions
-- There should be a counter in the app bar always showing the current number of
-  ToDo items pending
-- Filtering bae on tag and status
-
-## Delivering
-
-The result should be delivered within the following criteria:
-
-- The time difference between the first commit and the last commit should be
-  more than 30 mins and less that 2 hours
-- When the application is ready, create a pull request into the master branch
-- Your branch should be compile-able
-- Your branch should be runnable on iOS, Android and Web
-
-## Bonus Points
-
-You will receive bonus points if:
-
-- The application works on Windows as well
-
-## Manual
-
-Replace this text with any required instruction on how to build, run and use the
-app.
+Also, i didnt find the time to write unit or widget test, i can write some for showcase if 
+that is something that interests you, so just let me know.

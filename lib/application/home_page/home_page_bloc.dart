@@ -97,6 +97,11 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     );
   }
 
+  // README: The chosen database for this app, loads all the db content into memory when opening
+  // the app, so reading from this db is a cheap operation, as so ive decided to reFetch the
+  // data from db after each object manipulation since it is less error prone than manipulating
+  // objects in a mutable list.
+
   Future<void> _getTodos(
     Emitter<HomePageState> emit, {
     bool pageInitialized = false,
