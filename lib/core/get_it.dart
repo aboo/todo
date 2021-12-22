@@ -1,10 +1,12 @@
 import 'package:get_it/get_it.dart';
+import 'package:todo/application/bloc/add_todo_bloc.dart';
 import 'package:todo/data/db/database.dart';
 import 'package:todo/data/db/database_impl.dart';
 import 'package:todo/data/tag/tag_repository.dart';
 import 'package:todo/data/tag/tag_repository_impl.dart';
 import 'package:todo/data/todo/todo_repository.dart';
 import 'package:todo/data/todo/todo_repository_impl.dart';
+import 'package:todo/domain/todo.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -19,6 +21,15 @@ void setUpGetIt() {
   getIt.registerSingleton<TagRepository>(
     TagRepositoryImpl(
       db: getIt<DataBase>(),
+    ),
+  );
+
+  // Factories
+  getIt.registerFactoryParam<AddTodoBloc, Todo?, void>(
+    (todo, _) => AddTodoBloc(
+      todoRepository: getIt<TodoRepository>(),
+      tagRepository: getIt<TagRepository>(),
+      todo: todo,
     ),
   );
 }
