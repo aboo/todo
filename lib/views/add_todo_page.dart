@@ -23,7 +23,22 @@ class AddTodoPage extends StatelessWidget {
         },
         builder: (context, state) => Builder(
           builder: (context) => Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              actions: context.read<AddTodoBloc>().todo != null
+                  ? [
+                      IconButton(
+                        onPressed: () {
+                          context
+                              .read<AddTodoBloc>()
+                              .add(const AddTodoEditViewButtonPressed());
+                        },
+                        icon: state.isInViewMode
+                            ? const Icon(Icons.edit_outlined)
+                            : const Icon(Icons.remove_red_eye_outlined),
+                      )
+                    ]
+                  : null,
+            ),
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
@@ -37,6 +52,7 @@ class AddTodoPage extends StatelessWidget {
                       RoundedTextField(
                         controller: state.titleController,
                         label: 'Title',
+                        enabled: !state.isInViewMode,
                       ),
                       const SizedBox(
                         height: 10,
@@ -44,6 +60,7 @@ class AddTodoPage extends StatelessWidget {
                       RoundedTextField(
                         controller: state.descriptionController,
                         label: 'Description',
+                        enabled: !state.isInViewMode,
                         minLines: 10,
                       ),
                       const SizedBox(

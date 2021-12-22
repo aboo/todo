@@ -7,6 +7,7 @@ class AddTodoState with _$AddTodoState {
     required TextEditingController descriptionController,
     required List<Tag> tags,
     required bool shouldNavigateToHomePage,
+    required bool isInViewMode,
   }) = _AddTodoState;
 
   factory AddTodoState.initial(Todo? todo) => AddTodoState(
@@ -14,5 +15,6 @@ class AddTodoState with _$AddTodoState {
         descriptionController: TextEditingController(text: todo?.description),
         tags: todo?.tags ?? [],
         shouldNavigateToHomePage: false,
+        isInViewMode: todo != null,
       );
 }

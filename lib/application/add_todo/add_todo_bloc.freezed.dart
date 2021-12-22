@@ -26,6 +26,10 @@ class _$AddTodoEventTearOff {
   AddTodoSaveButtonPressed saveButtonPressed() {
     return const AddTodoSaveButtonPressed();
   }
+
+  AddTodoEditViewButtonPressed editViewButtonPressed() {
+    return const AddTodoEditViewButtonPressed();
+  }
 }
 
 /// @nodoc
@@ -37,18 +41,21 @@ mixin _$AddTodoEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String tag) tagAdded,
     required TResult Function() saveButtonPressed,
+    required TResult Function() editViewButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String tag)? tagAdded,
     TResult Function()? saveButtonPressed,
+    TResult Function()? editViewButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String tag)? tagAdded,
     TResult Function()? saveButtonPressed,
+    TResult Function()? editViewButtonPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,18 +63,22 @@ mixin _$AddTodoEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(AddTodoTagAdded value) tagAdded,
     required TResult Function(AddTodoSaveButtonPressed value) saveButtonPressed,
+    required TResult Function(AddTodoEditViewButtonPressed value)
+        editViewButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AddTodoTagAdded value)? tagAdded,
     TResult Function(AddTodoSaveButtonPressed value)? saveButtonPressed,
+    TResult Function(AddTodoEditViewButtonPressed value)? editViewButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddTodoTagAdded value)? tagAdded,
     TResult Function(AddTodoSaveButtonPressed value)? saveButtonPressed,
+    TResult Function(AddTodoEditViewButtonPressed value)? editViewButtonPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,6 +167,7 @@ class _$AddTodoTagAdded implements AddTodoTagAdded {
   TResult when<TResult extends Object?>({
     required TResult Function(String tag) tagAdded,
     required TResult Function() saveButtonPressed,
+    required TResult Function() editViewButtonPressed,
   }) {
     return tagAdded(tag);
   }
@@ -165,6 +177,7 @@ class _$AddTodoTagAdded implements AddTodoTagAdded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String tag)? tagAdded,
     TResult Function()? saveButtonPressed,
+    TResult Function()? editViewButtonPressed,
   }) {
     return tagAdded?.call(tag);
   }
@@ -174,6 +187,7 @@ class _$AddTodoTagAdded implements AddTodoTagAdded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String tag)? tagAdded,
     TResult Function()? saveButtonPressed,
+    TResult Function()? editViewButtonPressed,
     required TResult orElse(),
   }) {
     if (tagAdded != null) {
@@ -187,6 +201,8 @@ class _$AddTodoTagAdded implements AddTodoTagAdded {
   TResult map<TResult extends Object?>({
     required TResult Function(AddTodoTagAdded value) tagAdded,
     required TResult Function(AddTodoSaveButtonPressed value) saveButtonPressed,
+    required TResult Function(AddTodoEditViewButtonPressed value)
+        editViewButtonPressed,
   }) {
     return tagAdded(this);
   }
@@ -196,6 +212,7 @@ class _$AddTodoTagAdded implements AddTodoTagAdded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AddTodoTagAdded value)? tagAdded,
     TResult Function(AddTodoSaveButtonPressed value)? saveButtonPressed,
+    TResult Function(AddTodoEditViewButtonPressed value)? editViewButtonPressed,
   }) {
     return tagAdded?.call(this);
   }
@@ -205,6 +222,7 @@ class _$AddTodoTagAdded implements AddTodoTagAdded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddTodoTagAdded value)? tagAdded,
     TResult Function(AddTodoSaveButtonPressed value)? saveButtonPressed,
+    TResult Function(AddTodoEditViewButtonPressed value)? editViewButtonPressed,
     required TResult orElse(),
   }) {
     if (tagAdded != null) {
@@ -267,6 +285,7 @@ class _$AddTodoSaveButtonPressed implements AddTodoSaveButtonPressed {
   TResult when<TResult extends Object?>({
     required TResult Function(String tag) tagAdded,
     required TResult Function() saveButtonPressed,
+    required TResult Function() editViewButtonPressed,
   }) {
     return saveButtonPressed();
   }
@@ -276,6 +295,7 @@ class _$AddTodoSaveButtonPressed implements AddTodoSaveButtonPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String tag)? tagAdded,
     TResult Function()? saveButtonPressed,
+    TResult Function()? editViewButtonPressed,
   }) {
     return saveButtonPressed?.call();
   }
@@ -285,6 +305,7 @@ class _$AddTodoSaveButtonPressed implements AddTodoSaveButtonPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String tag)? tagAdded,
     TResult Function()? saveButtonPressed,
+    TResult Function()? editViewButtonPressed,
     required TResult orElse(),
   }) {
     if (saveButtonPressed != null) {
@@ -298,6 +319,8 @@ class _$AddTodoSaveButtonPressed implements AddTodoSaveButtonPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(AddTodoTagAdded value) tagAdded,
     required TResult Function(AddTodoSaveButtonPressed value) saveButtonPressed,
+    required TResult Function(AddTodoEditViewButtonPressed value)
+        editViewButtonPressed,
   }) {
     return saveButtonPressed(this);
   }
@@ -307,6 +330,7 @@ class _$AddTodoSaveButtonPressed implements AddTodoSaveButtonPressed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AddTodoTagAdded value)? tagAdded,
     TResult Function(AddTodoSaveButtonPressed value)? saveButtonPressed,
+    TResult Function(AddTodoEditViewButtonPressed value)? editViewButtonPressed,
   }) {
     return saveButtonPressed?.call(this);
   }
@@ -316,6 +340,7 @@ class _$AddTodoSaveButtonPressed implements AddTodoSaveButtonPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AddTodoTagAdded value)? tagAdded,
     TResult Function(AddTodoSaveButtonPressed value)? saveButtonPressed,
+    TResult Function(AddTodoEditViewButtonPressed value)? editViewButtonPressed,
     required TResult orElse(),
   }) {
     if (saveButtonPressed != null) {
@@ -330,6 +355,122 @@ abstract class AddTodoSaveButtonPressed implements AddTodoEvent {
 }
 
 /// @nodoc
+abstract class $AddTodoEditViewButtonPressedCopyWith<$Res> {
+  factory $AddTodoEditViewButtonPressedCopyWith(
+          AddTodoEditViewButtonPressed value,
+          $Res Function(AddTodoEditViewButtonPressed) then) =
+      _$AddTodoEditViewButtonPressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AddTodoEditViewButtonPressedCopyWithImpl<$Res>
+    extends _$AddTodoEventCopyWithImpl<$Res>
+    implements $AddTodoEditViewButtonPressedCopyWith<$Res> {
+  _$AddTodoEditViewButtonPressedCopyWithImpl(
+      AddTodoEditViewButtonPressed _value,
+      $Res Function(AddTodoEditViewButtonPressed) _then)
+      : super(_value, (v) => _then(v as AddTodoEditViewButtonPressed));
+
+  @override
+  AddTodoEditViewButtonPressed get _value =>
+      super._value as AddTodoEditViewButtonPressed;
+}
+
+/// @nodoc
+
+class _$AddTodoEditViewButtonPressed implements AddTodoEditViewButtonPressed {
+  const _$AddTodoEditViewButtonPressed();
+
+  @override
+  String toString() {
+    return 'AddTodoEvent.editViewButtonPressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AddTodoEditViewButtonPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String tag) tagAdded,
+    required TResult Function() saveButtonPressed,
+    required TResult Function() editViewButtonPressed,
+  }) {
+    return editViewButtonPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String tag)? tagAdded,
+    TResult Function()? saveButtonPressed,
+    TResult Function()? editViewButtonPressed,
+  }) {
+    return editViewButtonPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String tag)? tagAdded,
+    TResult Function()? saveButtonPressed,
+    TResult Function()? editViewButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (editViewButtonPressed != null) {
+      return editViewButtonPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddTodoTagAdded value) tagAdded,
+    required TResult Function(AddTodoSaveButtonPressed value) saveButtonPressed,
+    required TResult Function(AddTodoEditViewButtonPressed value)
+        editViewButtonPressed,
+  }) {
+    return editViewButtonPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AddTodoTagAdded value)? tagAdded,
+    TResult Function(AddTodoSaveButtonPressed value)? saveButtonPressed,
+    TResult Function(AddTodoEditViewButtonPressed value)? editViewButtonPressed,
+  }) {
+    return editViewButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddTodoTagAdded value)? tagAdded,
+    TResult Function(AddTodoSaveButtonPressed value)? saveButtonPressed,
+    TResult Function(AddTodoEditViewButtonPressed value)? editViewButtonPressed,
+    required TResult orElse(),
+  }) {
+    if (editViewButtonPressed != null) {
+      return editViewButtonPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddTodoEditViewButtonPressed implements AddTodoEvent {
+  const factory AddTodoEditViewButtonPressed() = _$AddTodoEditViewButtonPressed;
+}
+
+/// @nodoc
 class _$AddTodoStateTearOff {
   const _$AddTodoStateTearOff();
 
@@ -337,12 +478,14 @@ class _$AddTodoStateTearOff {
       {required TextEditingController titleController,
       required TextEditingController descriptionController,
       required List<Tag> tags,
-      required bool shouldNavigateToHomePage}) {
+      required bool shouldNavigateToHomePage,
+      required bool isInViewMode}) {
     return _AddTodoState(
       titleController: titleController,
       descriptionController: descriptionController,
       tags: tags,
       shouldNavigateToHomePage: shouldNavigateToHomePage,
+      isInViewMode: isInViewMode,
     );
   }
 }
@@ -358,6 +501,7 @@ mixin _$AddTodoState {
       throw _privateConstructorUsedError;
   List<Tag> get tags => throw _privateConstructorUsedError;
   bool get shouldNavigateToHomePage => throw _privateConstructorUsedError;
+  bool get isInViewMode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddTodoStateCopyWith<AddTodoState> get copyWith =>
@@ -373,7 +517,8 @@ abstract class $AddTodoStateCopyWith<$Res> {
       {TextEditingController titleController,
       TextEditingController descriptionController,
       List<Tag> tags,
-      bool shouldNavigateToHomePage});
+      bool shouldNavigateToHomePage,
+      bool isInViewMode});
 }
 
 /// @nodoc
@@ -390,6 +535,7 @@ class _$AddTodoStateCopyWithImpl<$Res> implements $AddTodoStateCopyWith<$Res> {
     Object? descriptionController = freezed,
     Object? tags = freezed,
     Object? shouldNavigateToHomePage = freezed,
+    Object? isInViewMode = freezed,
   }) {
     return _then(_value.copyWith(
       titleController: titleController == freezed
@@ -408,6 +554,10 @@ class _$AddTodoStateCopyWithImpl<$Res> implements $AddTodoStateCopyWith<$Res> {
           ? _value.shouldNavigateToHomePage
           : shouldNavigateToHomePage // ignore: cast_nullable_to_non_nullable
               as bool,
+      isInViewMode: isInViewMode == freezed
+          ? _value.isInViewMode
+          : isInViewMode // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -423,7 +573,8 @@ abstract class _$AddTodoStateCopyWith<$Res>
       {TextEditingController titleController,
       TextEditingController descriptionController,
       List<Tag> tags,
-      bool shouldNavigateToHomePage});
+      bool shouldNavigateToHomePage,
+      bool isInViewMode});
 }
 
 /// @nodoc
@@ -442,6 +593,7 @@ class __$AddTodoStateCopyWithImpl<$Res> extends _$AddTodoStateCopyWithImpl<$Res>
     Object? descriptionController = freezed,
     Object? tags = freezed,
     Object? shouldNavigateToHomePage = freezed,
+    Object? isInViewMode = freezed,
   }) {
     return _then(_AddTodoState(
       titleController: titleController == freezed
@@ -460,6 +612,10 @@ class __$AddTodoStateCopyWithImpl<$Res> extends _$AddTodoStateCopyWithImpl<$Res>
           ? _value.shouldNavigateToHomePage
           : shouldNavigateToHomePage // ignore: cast_nullable_to_non_nullable
               as bool,
+      isInViewMode: isInViewMode == freezed
+          ? _value.isInViewMode
+          : isInViewMode // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -471,7 +627,8 @@ class _$_AddTodoState implements _AddTodoState {
       {required this.titleController,
       required this.descriptionController,
       required this.tags,
-      required this.shouldNavigateToHomePage});
+      required this.shouldNavigateToHomePage,
+      required this.isInViewMode});
 
   @override
   final TextEditingController titleController;
@@ -481,10 +638,12 @@ class _$_AddTodoState implements _AddTodoState {
   final List<Tag> tags;
   @override
   final bool shouldNavigateToHomePage;
+  @override
+  final bool isInViewMode;
 
   @override
   String toString() {
-    return 'AddTodoState(titleController: $titleController, descriptionController: $descriptionController, tags: $tags, shouldNavigateToHomePage: $shouldNavigateToHomePage)';
+    return 'AddTodoState(titleController: $titleController, descriptionController: $descriptionController, tags: $tags, shouldNavigateToHomePage: $shouldNavigateToHomePage, isInViewMode: $isInViewMode)';
   }
 
   @override
@@ -498,7 +657,9 @@ class _$_AddTodoState implements _AddTodoState {
                 .equals(other.descriptionController, descriptionController) &&
             const DeepCollectionEquality().equals(other.tags, tags) &&
             const DeepCollectionEquality().equals(
-                other.shouldNavigateToHomePage, shouldNavigateToHomePage));
+                other.shouldNavigateToHomePage, shouldNavigateToHomePage) &&
+            const DeepCollectionEquality()
+                .equals(other.isInViewMode, isInViewMode));
   }
 
   @override
@@ -507,7 +668,8 @@ class _$_AddTodoState implements _AddTodoState {
       const DeepCollectionEquality().hash(titleController),
       const DeepCollectionEquality().hash(descriptionController),
       const DeepCollectionEquality().hash(tags),
-      const DeepCollectionEquality().hash(shouldNavigateToHomePage));
+      const DeepCollectionEquality().hash(shouldNavigateToHomePage),
+      const DeepCollectionEquality().hash(isInViewMode));
 
   @JsonKey(ignore: true)
   @override
@@ -520,7 +682,8 @@ abstract class _AddTodoState implements AddTodoState {
       {required TextEditingController titleController,
       required TextEditingController descriptionController,
       required List<Tag> tags,
-      required bool shouldNavigateToHomePage}) = _$_AddTodoState;
+      required bool shouldNavigateToHomePage,
+      required bool isInViewMode}) = _$_AddTodoState;
 
   @override
   TextEditingController get titleController;
@@ -530,6 +693,8 @@ abstract class _AddTodoState implements AddTodoState {
   List<Tag> get tags;
   @override
   bool get shouldNavigateToHomePage;
+  @override
+  bool get isInViewMode;
   @override
   @JsonKey(ignore: true)
   _$AddTodoStateCopyWith<_AddTodoState> get copyWith =>

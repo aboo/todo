@@ -18,6 +18,7 @@ class AddTodoBloc extends Bloc<AddTodoEvent, AddTodoState> {
   }) : super(AddTodoState.initial(todo)) {
     on<AddTodoTagAdded>(_tagAdded);
     on<AddTodoSaveButtonPressed>(_saveButtonPressed);
+    on<AddTodoEditViewButtonPressed>(_editViewButtonPressed);
   }
 
   final TodoRepository todoRepository;
@@ -30,6 +31,10 @@ class AddTodoBloc extends Bloc<AddTodoEvent, AddTodoState> {
     Tag tag = Tag.newInstance(event.tag);
     tags.add(tag);
     emit(state.copyWith(tags: tags));
+  }
+
+  void _editViewButtonPressed(_, Emitter<AddTodoState> emit) {
+    emit(state.copyWith(isInViewMode: !state.isInViewMode));
   }
 
   void _saveButtonPressed(_, Emitter<AddTodoState> emit) async {
