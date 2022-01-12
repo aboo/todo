@@ -1,33 +1,41 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'Datas/task_data.dart';
+import 'Views/MainPage_View.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: TodoApp(),
-    );
-  }
-}
+void main() => runApp(const MainApp());
 
-class TodoApp extends StatelessWidget {
-  const TodoApp({Key key}) : super(key: key);
+class MainApp extends StatelessWidget {
+  const MainApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: _buildApp(),
-    );
-  }
+    return ChangeNotifierProvider<TaskData>(
+      create: (context) => TaskData(),
+      child: WillPopScope(child:  AdaptiveTheme(
+        light: ThemeData(
+          brightness: Brightness.light,
+        ),
+        dark: ThemeData(
+          brightness: Brightness.dark,
+        ),
+        initial: AdaptiveThemeMode.light,
+        builder: (theme, darkTheme) => MaterialApp(
+          title: 'Freelancer',
+          theme: theme,
+          builder: EasyLoading.init(),
+          darkTheme: darkTheme,
+          initialRoute: "/MainView",
+          routes: {
+            "/MainView": (context) =>    Directionality(textDirection: TextDirection.rtl, child: MainView()),
 
-  _buildApp() {
-    return Text("Implement Todo App here!");
+          },
+          debugShowCheckedModeBanner: false,
+        ),
+      ), onWillPop: () => Future(() => false)),
+    ) ;
   }
 }

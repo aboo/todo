@@ -55,5 +55,4 @@ You will receive bonus points if:
 
 ## Manual
 
-Replace this text with any required instruction on how to build, run and use the
-app.
+hi , i done the most of logic but i didn't complete the app , i will send it any way in 2 hours ,thanks for reviewing my code
