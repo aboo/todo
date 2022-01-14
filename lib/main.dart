@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/viewmodel/todo_viewmodel.dart';
+import 'package:todo/views/Home.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,27 +10,22 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: TodoApp(),
-    );
+    return
+      ChangeNotifierProvider<TodoViewModel>(
+          create: (context) => TodoViewModel(context)
+          ,child: MaterialApp(
+        title: 'ToDo Application Challenge',
+        theme: ThemeData(
+          primaryColor: Colors.black,
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        initialRoute: "/Home",
+        routes: {
+          "/Home":(context) =>  Home(),
+        },
+      ));
   }
 }
 
-class TodoApp extends StatelessWidget {
-  const TodoApp({Key key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: _buildApp(),
-    );
-  }
-
-  _buildApp() {
-    return Text("Implement Todo App here!");
-  }
-}
